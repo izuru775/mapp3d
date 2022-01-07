@@ -1,8 +1,6 @@
 import "aframe";
-import React, { Component } from "react";
+import React from "react";
 import "aframe-environment-component";
-import Assets from "./Assets";
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -38,11 +36,11 @@ class App extends React.Component {
   }
 
   render() {
-    // Loading the
-
+    // Loading 3dObject from S3 bucket
     let modelUrl =
       "https://foresthouse.s3.ap-southeast-2.amazonaws.com/forest_house/house.gltf";
       const dbData =this.state.items;
+      console.log(typeof(dbData.url))
     return (
       <a-scene id="mainScene" background="color:black" environment="preset:forest">
         <a-entity
