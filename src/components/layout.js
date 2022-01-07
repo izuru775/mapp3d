@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as mui from "@mui/material";
+import UploadDialog from './UploadDialog';
 
 const Layout = () => {
   let view = (
@@ -17,7 +18,12 @@ const Layout = () => {
         </mui.Grid>
         <mui.Grid item xs={8} sx={{ border: "dashed" }}>
           <mui.Box>
+            <mui.Toolbar />
             <mui.Typography variant="h2">Main Content</mui.Typography>
+            <mui.Toolbar />
+            <mui.Toolbar>
+              <UploadDialog />
+            </mui.Toolbar>
           </mui.Box>
         </mui.Grid>
       </mui.Grid>
