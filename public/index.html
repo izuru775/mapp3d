@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.2.0/dist/aframe-environment-component.min.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -19,96 +12,6 @@
     <title>Mapp3D</title>
   </head>
   <body>
-    <a-scene id="mainScene" background="color:black" environment="preset:forest">
-      <!-- <a-plane
-        position="0 0 -4"
-        rotation="-90 0 0"
-        scale="100 100 100"
-        width="100"
-        height="100"
-      ></a-plane> -->
-      <a-sky color="white"></a-sky>
-      <a-assets id="assets"> </a-assets>
-    </a-scene>
-  </body>
-
-  <script>
-    $(document).ready(() => {
-      let dataUrl = "http://localhost:3001/api";
-
-      let objectArray = [];
-
-      // Retreving location,scale & rotation from dataUrl api
-      $.get(dataUrl, (result, err) => {
-        const { environmentName, environmentCreator, vrObject } =
-          result.data[0];
-        let { position, scale, rotation } = vrObject[0];
-
-        console.log(result);
-
-        let models = [
-          {
-            model: "foresthouse",
-            scale: "50 50 50",
-            rotation: "0 0 0",
-            position: "24.952 0 -3.840 ",
-          },
-          {
-            model: "foresthouse",
-            scale: "50 50 50",
-            rotation: "0 180 0",
-            position: "-25.0 0 -3 ",
-          },
-          {
-            model: "foresthouse",
-            scale: "50 50 50",
-            rotation: "0 270 0",
-            position: "2.512 0 18 ",
-          },
-          {
-            model: "foresthouse",
-            scale: scale,
-            rotation: rotation,
-            position: position,
-          }
-        ];
-
-        let assets = [
-          {
-            name: "tree",
-            url: "https://bucketbeforekicks.s3.ap-southeast-2.amazonaws.com/tree.glb",
-          },
-          {
-            name: "foresthouse",
-            url: "https://foresthouse.s3.ap-southeast-2.amazonaws.com/forest_house/house.gltf",
-          },
-        ];
-
-        //load the assets dynamically
-        assets.forEach((asset) => {
-          let tAsset = $(
-            `<a-asset-item  id="${asset.name}" src="${asset.url}"></a-asset-item>`
-          );
-          $("#assets").append(tAsset);
-        });
-
-        models.forEach((model) => {
-          console.log(model);
-          //let test=$(`<div>Hello ${model}</div>`)
-          let test = $(
-            `<a-entity scale="${model.scale}" rotation="${model.rotation}" position="${model.position}" gltf-model="#${model.model}"></a-entity>`
-          );
-          $("#mainScene").append(test);
-          console.log(test);
-        });
-        document
-          .querySelector("a-entity")
-          .addEventListener("click", function (evt) {
-            console.log("This A-Frame entity collided with another entity!");
-          });
-      });
-    });
-  </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
