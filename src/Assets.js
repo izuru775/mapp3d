@@ -49,7 +49,6 @@ function MyComponent() {
         <a-assets>
           <a-asset-item  id="tree" src={url}></a-asset-item>
         </a-assets>
-
         <a-gltf-model position={items.position} scale={items.scale} rotation ={items.rotation} src="#tree"></a-gltf-model>
       </Scene>
       //this is sdsd
