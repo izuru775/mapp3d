@@ -2,6 +2,7 @@ import "aframe";
 import React, { useState, useEffect, Suspense } from "react";
 import { Scene } from "aframe-react";
 import ReactDOM from "react-dom";
+import "./Assets.css";
 
 function MyComponent() {
   const [error, setError] = useState(null);
@@ -43,6 +44,7 @@ function MyComponent() {
         id="mainScene"
         background="color:black"
         environment="preset:forest"
+        className="menu"
       >
         {/* <Entity text={{value: 'Hello, A-Frame React!', align: 'center',color:'black'}} position={{x: 0, y: 2, z: -1}}/> */}
 
